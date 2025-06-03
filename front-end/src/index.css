@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
-:root {
-  background-color: #242424;
+
+body {
+    background-color: aliceblue;
+   
+}
+input {
+   outline: none;
+}
+select {
+   outline: none;
+}
+button {
+  transition: background-color 1s ease;
+}
+button:hover {
+  background-color: blue;
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
 }

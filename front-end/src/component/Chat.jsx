@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import io from "socket.io-client";
-import { ShopProvider} from '../ShopContext'
 const socket = io("http://localhost:5174");
 
 export default function Chat() {
@@ -12,11 +11,8 @@ export default function Chat() {
   const messagesEndRef = useRef(null)
 
   useEffect(() => {
-    socket.on("joined-room", ({ room, customers, role }) => {
+    socket.on("joined-room", ({ room }) => {
       setRoom(room);
-      if(role==='customer') {
-
-      }
     });
 
     socket.on("chat-message", ({ sender, message }) => {
@@ -56,6 +52,7 @@ export default function Chat() {
   };
 
   return (
+    <div className="flex items-center min-h-[70vh]">
     <div className="max-w-md mx-auto p-4 border rounded shadow">
       {!room ? (
         <div className="space-y-4">
@@ -81,14 +78,15 @@ export default function Chat() {
             Join Chat
           </button>
         </div>
+        
       ) : (
-        <div>
-          <div className="h-64 overflow-y-scroll scrollbar-hide border p-2 mb-4">
-            {messages.map((msg, idx) => {
+        <div >
+          <div className="h-64 overflow-y-scroll scrollbar-hidden border p-2 mb-4 ">
+            {messages.map((msg, indx) => {
               const isSender = msg.sender === name;
               return (
                 <div
-                  key={idx}
+                  key={indx}
                   className={`mb-2 flex ${
                     isSender ? "justify-end" : "justify-start"
                   }`}
@@ -128,6 +126,7 @@ export default function Chat() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }
