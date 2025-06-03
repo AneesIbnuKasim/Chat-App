@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 app.use(cors({
-  origin: 'https://AneesIbnuKasim.github.io/Chat-App',
+  origin: 'https://aneesibnukasim.github.io/Chat-App',
   methods: ['GET', 'POST'],
   credentials: true
 }));
