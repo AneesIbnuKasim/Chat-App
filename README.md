@@ -19,6 +19,7 @@ The Customer-Agent Chat application is a dynamic and user-friendly web applicati
 ### User join a room:
 
 - Customer can join a room by selecting customer role and chat with an agent when they joins the same room.
+
 -Agents can join room if there are waiting customers and it will select to join automatically on fcfs basis to users room.
 ## Technologies Used ⚙️
 
