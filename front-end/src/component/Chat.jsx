@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import io from "socket.io-client";
-const socket = io("http://localhost:5174");
+const socket = io("https://chat-app-backend-bflx.onrender.com");
 
 export default function Chat() {
   const [name, setName] = useState("");
