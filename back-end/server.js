@@ -26,14 +26,20 @@ io.on('connection', socket => {
 
   socket.on('customer-join', ({ name }) => {
     const room = `room-${socket.id}`;
+    
     socket.join(room);
     socket.data = { role: 'customer', name, room };
+    console.log('room', room);
     waitingCustomers.push({ name:name, socketId: socket.id, room });
+    console.log('waiting customers:', waitingCustomers);
+    
     socket.emit('joined-room', { room });
   });
 
   socket.on('agent-join', ({ name }) => {
+    console.log('agent room hit');
     const customer = waitingCustomers.shift();
+    console.log('agent room', customer);
     if (customer) {
       socket.join(customer.room);
       socket.data = { role: 'agent', name, room: customer.room };
@@ -52,4 +58,4 @@ io.on('connection', socket => {
   });
 });
 
-server.listen(5174, () => console.log('Server running on port 5174'));
+server.listen(5175, () => console.log('Server running on port 5175'));
